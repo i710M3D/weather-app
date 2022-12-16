@@ -22,7 +22,7 @@ export default function Weather({ data }) {
         </p>
       </div>
       {/* bottom */}
-      <div className="sm:max-w-[500px] w-full sm:mx-auto mt-96 flex flex-col text-white bg-black/70 rounded-2xl  sm:scale-100 xs:scale-75">
+      <div className="sm:max-w-[500px] w-full sm:mx-auto sm:mt-96 mt-40 flex flex-col text-white bg-black/70 rounded-2xl  sm:scale-100 scale-75">
         <div className="flex ">
           <h1 className="mx-auto p-5 xs:text-3xl font-extrabold text-xl ">
             Weather in {data.name}
