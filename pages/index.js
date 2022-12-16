@@ -5,13 +5,11 @@ import { useState, useRef } from "react";
 import Image from "next/image";
 import Weather from "../components/weather.js";
 
-
-
 export default function Home() {
   const [weather, setWeather] = useState({});
   const [city, setCity] = useState("");
   const [loading, setLoading] = useState(false);
-  const inputRef  =useRef()
+  const inputRef = useRef();
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.NEXT_PUBLIC_API_KEY}`;
 
   const fetchWeather = (e) => {
@@ -23,7 +21,7 @@ export default function Home() {
     });
     setCity("");
     setLoading(false);
-    inputRef.current.value=""
+    inputRef.current.value = "";
   };
   const EmptyInput = (e) => {
     setCity(e.target.value);
@@ -37,35 +35,35 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <div className=" absolute top-0 left-0 bottom-0 right-0 bg-black/30 -z-[1px] pointer-events-none" />
-      <Image
-        src="https://images.unsplash.com/photo-1601134467661-3d775b999c8b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1075&q=80"
-        fill
-        className=" object-cover -z-10"
-      />
-      {/* search*/}
-      <div className=" relative  flex justify-between max-w-[500px] m-auto pt-10 items-center z-10 ">
-        <form
-          className="flex justify-between items-center w-full m-auto p-3 bg-transparent border border-gray-300 rounded-2xl "
-          onSubmit={fetchWeather}
-        >
-          <div>
-            <input
-              type="text"
-              placeholder="Search City.."
-              className=" bg-transparent focus:outline-none w-[90%] text-white placeholder:text-gray-300 placeholder:font-semibold"
-              onChange={(e) => EmptyInput(e)} ref={inputRef}
-            />
-          </div>
-          <button type="button" onClick={fetchWeather}>
-            <BsSearch className="text-gray-300" size={20} />
-          </button>
-        </form>
-      </div>
-      {/* Stats */}
-      <div>
-      {!loading && weather.main && <Weather data={weather} />}
+      <div className="h-screen w-screen">
+        <div className=" absolute top-0 left-0 bottom-0 right-0 bg-black/30 -z-[1px] pointer-events-none" />
+        <Image
+          src="https://images.unsplash.com/photo-1601134467661-3d775b999c8b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1075&q=80"
+          fill
+          className=" object-cover -z-10"
+        />
+        {/* search*/}
+        <div className=" relative  flex justify-between max-w-[500px] m-auto pt-10 items-center z-10 ">
+          <form
+            className="flex justify-between items-center w-full m-auto p-3 bg-transparent border border-gray-300 rounded-2xl "
+            onSubmit={fetchWeather}
+          >
+            <div>
+              <input
+                type="text"
+                placeholder="Search City.."
+                className=" bg-transparent focus:outline-none w-[90%] text-white placeholder:text-gray-300 placeholder:font-semibold"
+                onChange={(e) => EmptyInput(e)}
+                ref={inputRef}
+              />
+            </div>
+            <button type="button" onClick={fetchWeather}>
+              <BsSearch className="text-gray-300" size={20} />
+            </button>
+          </form>
+        </div>
+        {/* Stats */}
+        <div>{!loading && weather.main && <Weather data={weather} />}</div>
       </div>
     </>
   );
