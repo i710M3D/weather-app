@@ -8,7 +8,7 @@ export default function Weather({ data }) {
       <div className="relative  flex justify-between max-w-[500px] max-h-fit m-auto mt-4 items-center z-10 ">
         <div className="flex flex-col  justify-center ">
           <Image
-            src={`http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`}
+            src={`https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`}
             width="100"
             height="100"
             alt=""
